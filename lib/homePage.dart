@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'musicGamePage.dart';
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -9,34 +11,36 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _image(),
+            _image(context),
           ],
         ), //Column
       ), //Center
     ); //Scaffold
   }
 
-  Widget _image() {
+  Widget _image(context) {
     return Stack(
       children: [
         Image(image: AssetImage("assets/HomePage.png")),
-        /*Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: 101,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Color.fromARGB(0, 255, 255, 255),
-                    Color.fromARGB(255, 255, 255, 255)
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
+        Positioned(
+            bottom: 130,
+            left: 170,
+            // right: 0,
+            child: Visibility(
+              child: FlatButton(
+                child: null,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MusicGamePage()));
+                },
+                shape: new CircleBorder(),
+                color: Colors.black12,
               ),
-            )),*/
+              maintainSize: true,
+              maintainAnimation: true,
+              maintainState: true,
+              visible: true,
+            )),
       ],
     );
   }
