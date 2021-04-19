@@ -1,11 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/material.dart';
 
 class MusicGamePage extends StatelessWidget {
-  static AudioCache player = new AudioCache();
+  static AudioCache cache = new AudioCache();
+  static AudioPlayer player = new AudioPlayer();
+
+  final water = "water.mp3";
 
   @override
   Widget build(BuildContext context) {
+    _playAll();
     return Scaffold(
       body: Center(
         child: Column(
@@ -19,9 +24,15 @@ class MusicGamePage extends StatelessWidget {
     ); //Scaffold
   }
 
-  Widget _image(context) {
-    const water = "water.mp3";
+  void _playAll() async {
+    player = await cache.loop(water);
+  }
 
+  void _stopAll() {
+    player?.stop();
+  }
+
+  Widget _image(context) {
     return Stack(
       children: [
         Image(image: AssetImage("assets/MusicGame.PNG")),
@@ -30,17 +41,18 @@ class MusicGamePage extends StatelessWidget {
             child: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
+                _stopAll();
                 Navigator.pop(context);
               },
               color: Colors.orange,
             )),
         Positioned(
-            top: 50,
+            top: 170,
+            left: 180,
             child: IconButton(
-              icon: Icon(Icons.note),
-              onPressed: () {
-                player.play(water);
-              },
+              icon: Icon(Icons.music_note_rounded),
+              iconSize: 100,
+              onPressed: () {},
               color: Colors.orange,
             )),
       ],
