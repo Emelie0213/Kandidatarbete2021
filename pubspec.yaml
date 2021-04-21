@@ -45,7 +45,7 @@ flutter:
   assets:
     - assets/HomePage.png
     - assets/MusicGame.PNG
-    - assets/water.mp3
+    - assets/Vatten.wav
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
