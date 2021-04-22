@@ -12,10 +12,12 @@ class _MusicGamePageState extends State<MusicGamePage> {
   AudioCache cache; // = AudioCache();
   AudioPlayer player;
   final test = "Flourlack.wav";
+  bool visibleStartButton = true;
+  bool visibleMusicButtons = false;
 
-  void _playAll() async {
+  void _playAll(double volume) async {
     await cache.load(test);
-    player = await cache.loop(test, volume: 0.0);
+    player = await cache.loop(test, volume: volume);
   }
 
   void _stopAll() {
@@ -35,8 +37,9 @@ class _MusicGamePageState extends State<MusicGamePage> {
           child: Stack(
         children: [
           _image(context),
-          _backButton(),
           _startButton(),
+          _backButton(),
+          _flourlackButton(),
         ],
       )),
     );
@@ -44,6 +47,38 @@ class _MusicGamePageState extends State<MusicGamePage> {
 
   Widget _image(context) {
     return Image(image: AssetImage("assets/Ljudspelet.png"));
+  }
+
+  Widget _startButton() {
+    return Positioned(
+      child: Center(
+        child: Container(
+          width: 120,
+          height: 120,
+          child: Visibility(
+            visible: visibleStartButton,
+            child: FloatingActionButton(
+                backgroundColor: Color.fromRGBO(42, 132, 210, 1.0),
+                shape: StadiumBorder(
+                    side: BorderSide(
+                  color: Colors.blue[900],
+                  width: 4,
+                )),
+                child: Text(
+                  'START',
+                  textScaleFactor: 1.5,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _playAll(0.0);
+                    visibleStartButton = false;
+                    visibleMusicButtons = true;
+                  });
+                }),
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _backButton() {
@@ -64,31 +99,20 @@ class _MusicGamePageState extends State<MusicGamePage> {
     );
   } //_backButton
 
-  Widget _startButton() {
+  Widget _flourlackButton() {
     return Positioned(
-      child: Center(
-        child: Container(
-          width: 120,
-          height: 120,
-          child: FloatingActionButton(
-              backgroundColor: Color.fromRGBO(42, 132, 210, 1.0),
-              shape: StadiumBorder(
-                  side: BorderSide(
-                color: Colors.blue[900],
-                width: 4,
-              )),
-              child: Text(
-                'START',
-                textScaleFactor: 1.5,
-              ),
-              onPressed: () {
-                _playAll();
-              }),
+      top: 100,
+      right: 10,
+      child: Visibility(
+        visible: visibleMusicButtons,
+        child: IconButton(
+          icon: Icon(Icons.music_note),
+          onPressed: () {
+            _playAll(1.0);
+          },
+          color: Color.fromRGBO(42, 132, 210, 1.0),
         ),
       ),
     );
-  }
-
-  //_startButton
-
-}
+  } //_flourlackButton
+} //class MusicGamePageState

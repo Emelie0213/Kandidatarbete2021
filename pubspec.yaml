@@ -45,7 +45,16 @@ flutter:
   assets:
     - assets/HomePage.png
     - assets/Ljudspelet.png
+    - assets/Blaster.wav
+    - assets/Borr.wav
     - assets/Flourlack.wav
+    - assets/Puts.wav
+    - assets/Rontgen.wav
+    - assets/Sickel.wav
+    - assets/Sond.wav
+    - assets/Stol.wav
+    - assets/Sug.wav
+    - assets/Vatten.wav
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
