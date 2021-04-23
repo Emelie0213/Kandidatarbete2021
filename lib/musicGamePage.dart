@@ -105,12 +105,14 @@ class _MusicGamePageState extends State<MusicGamePage> {
       right: 10,
       child: Visibility(
         visible: visibleMusicButtons,
-        child: IconButton(
-          icon: Icon(Icons.music_note),
-          onPressed: () {
-            _playAll(1.0);
+        child: InkWell(
+          onTap: () {
+            print("you tapped flourlackButton");
           },
-          color: Color.fromRGBO(42, 132, 210, 1.0),
+          child: Transform.rotate(
+            angle: math.pi / 4,
+            child: Image(image: AssetImage("placeholderMuted.png")),
+          ),
         ),
       ),
     );

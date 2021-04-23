@@ -25,7 +25,6 @@ class HomePage extends StatelessWidget {
         Positioned(
             bottom: 130,
             left: 170,
-            // right: 0,
             child: Visibility(
               child: FlatButton(
                 child: null,
