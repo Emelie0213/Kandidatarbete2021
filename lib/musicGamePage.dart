@@ -3,32 +3,23 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
+import 'audio.dart';
+
 class MusicGamePage extends StatefulWidget {
   @override
   _MusicGamePageState createState() => _MusicGamePageState();
 }
 
 class _MusicGamePageState extends State<MusicGamePage> {
-  AudioCache cache; // = AudioCache();
-  AudioPlayer player;
-  final test = "Flourlack.wav";
+  List<Audio> audioList;
   bool visibleStartButton = true;
   bool visibleMusicButtons = false;
-
-  void _playAll(double volume) async {
-    await cache.load(test);
-    player = await cache.loop(test, volume: volume);
-  }
-
-  void _stopAll() {
-    player?.stop();
-  }
 
   @override
   void initState() {
     super.initState();
-    cache = AudioCache();
-    //cache.load(test);
+    audioList = getAudio();
+    loadAudio(audioList);
   }
 
   Widget build(BuildContext context) {
@@ -70,7 +61,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
                 ),
                 onPressed: () {
                   setState(() {
-                    _playAll(0.0);
+                    playAudio(audioList);
                     visibleStartButton = false;
                     visibleMusicButtons = true;
                   });
@@ -90,7 +81,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
           icon: Icon(Icons.forward),
           iconSize: 50,
           onPressed: () {
-            _stopAll();
+            stopAudio(audioList);
             Navigator.pop(context);
           },
           color: Color.fromRGBO(42, 132, 210, 1.0),
@@ -101,17 +92,22 @@ class _MusicGamePageState extends State<MusicGamePage> {
 
   Widget _flourlackButton() {
     return Positioned(
-      top: 100,
-      right: 10,
+      bottom: 100,
+      right: 240,
       child: Visibility(
         visible: visibleMusicButtons,
         child: InkWell(
           onTap: () {
             print("you tapped flourlackButton");
+            audioList.elementAt(0).mute();
           },
           child: Transform.rotate(
             angle: math.pi / 4,
-            child: Image(image: AssetImage("placeholderMuted.png")),
+            child: Image(
+              image: AssetImage("assets/placeholderMuted.png"),
+              height: 50,
+              width: 25,
+            ),
           ),
         ),
       ),
