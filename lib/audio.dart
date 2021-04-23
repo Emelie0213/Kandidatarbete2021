@@ -5,11 +5,14 @@ class Audio {
   String name;
   String audioFile;
 
-  static AudioPlayer player = AudioPlayer();
-  static AudioCache cache = AudioCache(fixedPlayer: player);
+  AudioPlayer player;
+  AudioCache cache;
   double volume = 1.0;
 
-  Audio(this.name, this.audioFile);
+  Audio(this.name, this.audioFile) {
+    player = AudioPlayer();
+    cache = AudioCache(fixedPlayer: player);
+  }
 
   void load() async {
     await cache.load(audioFile);
@@ -38,15 +41,15 @@ class Audio {
 
 List<Audio> getAudio() {
   List<Audio> _audioList = <Audio>[
-    //Audio('Blaster', 'Blaster.wav'),
+    Audio('Blaster', 'Blaster.wav'),
     Audio('Borr', 'Borr.wav'),
-    //Audio('Flourlack', 'Flourlack.wav'),
-    //Audio('Puts', 'Puts.wav'),
-    //Audio('Rontgen', 'Rontgen.wav'),
-    //Audio('Sickel', 'Sickel.wav'),
-    // Audio('Sond', 'Sond.wav'),
-    //Audio('Sug', 'Sug.wav'),
-    //Audio('Vatten', 'Vatten.wav'),
+    Audio('Flourlack', 'Flourlack.wav'),
+    Audio('Puts', 'Puts.wav'),
+    Audio('Rontgen', 'Rontgen.wav'),
+    Audio('Sickel', 'Sickel.wav'),
+    Audio('Sond', 'Sond.wav'),
+    Audio('Sug', 'Sug.wav'),
+    Audio('Vatten', 'Vatten.wav'),
   ];
   return _audioList;
 }
