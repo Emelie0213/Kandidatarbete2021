@@ -21,19 +21,19 @@ class HomePage extends StatelessWidget {
   Widget _image(context) {
     return Stack(
       children: [
-        Image(image: AssetImage("assets/HomePage.png")),
+        Image(image: AssetImage("assets/HomeMenu.png")),
         Positioned(
             bottom: 130,
             left: 170,
             child: Visibility(
               child: FlatButton(
+                color: Colors.blue,
+                shape: CircleBorder(),
                 child: null,
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => MusicGamePage()));
                 },
-                shape: new CircleBorder(),
-                color: Colors.black12,
               ),
               maintainSize: true,
               maintainAnimation: true,

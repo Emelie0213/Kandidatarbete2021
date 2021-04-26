@@ -43,20 +43,11 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
-    - assets/HomePage.png
-    - assets/Ljudspelet.png
-    - assets/Blaster.wav
-    - assets/Borr.wav
-    - assets/Flourlack.wav
-    - assets/Puts.wav
-    - assets/Rontgen.wav
-    - assets/Sickel.wav
-    - assets/Sond.wav
-    - assets/Stol.wav
-    - assets/Sug.wav
-    - assets/Vatten.wav
-    - assets/placeholderMuted.png
-    - assets/placeholderUnmuted.png
+    - assets/HomeMenu.png
+    - assets/Musicgame_Background.png
+    - assets/Musicgame_Background_02.png
+    - assets/Audio/
+    - assets/Images/
 
 
   # The following line ensures that the Material Icons font is

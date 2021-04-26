@@ -7,7 +7,7 @@ class Audio {
 
   AudioPlayer player;
   AudioCache cache;
-  double volume = 1.0;
+  double volume = 0.0;
 
   Audio(this.name, this.audioFile) {
     player = AudioPlayer();
@@ -34,22 +34,27 @@ class Audio {
     print("unmuted $audioFile");
   }
 
-  void stop() {
-    player?.stop();
+  void stop() async {
+    player.stop();
+    print("stopped $audioFile");
+    player.release();
+    print("released $audioFile");
+    cache.clearCache();
+    print("cleard cache");
   }
 }
 
 List<Audio> getAudio() {
   List<Audio> _audioList = <Audio>[
-    Audio('Blaster', 'Blaster.wav'),
-    Audio('Borr', 'Borr.wav'),
-    Audio('Flourlack', 'Flourlack.wav'),
-    Audio('Puts', 'Puts.wav'),
-    Audio('Rontgen', 'Rontgen.wav'),
-    Audio('Sickel', 'Sickel.wav'),
-    Audio('Sond', 'Sond.wav'),
-    Audio('Sug', 'Sug.wav'),
-    Audio('Vatten', 'Vatten.wav'),
+    Audio('Blaster', 'Audio/Blaster.wav'),
+    Audio('Borr', 'Audio/Borr.wav'),
+    Audio('Flourlack', 'Audio/Flourlack.wav'),
+    Audio('Puts', 'Audio/Puts.wav'),
+    Audio('Rontgen', 'Audio/Rontgen.wav'),
+    Audio('Sickel', 'Audio/Sickel.wav'),
+    Audio('Sond', 'Audio/Sond.wav'),
+    Audio('Sug', 'Audio/Sug.wav'),
+    Audio('Vatten', 'Audio/Vatten.wav'),
   ];
   return _audioList;
 }

@@ -37,7 +37,11 @@ class _MusicGamePageState extends State<MusicGamePage> {
   } //build
 
   Widget _image(context) {
-    return Image(image: AssetImage("assets/Ljudspelet.png"));
+    if (visibleStartButton = true) {
+      return Image(image: AssetImage("assets/Musicgame_Background_02.png"));
+    } else {
+      return Image(image: AssetImage("assets/Musicgame_Background.png"));
+    }
   }
 
   Widget _startButton() {
@@ -64,6 +68,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
                     playAudio(audioList);
                     visibleStartButton = false;
                     visibleMusicButtons = true;
+                    print(
+                        "startbutton: $visibleStartButton , musicbuttons: $visibleMusicButtons");
                   });
                 }),
           ),
@@ -92,21 +98,21 @@ class _MusicGamePageState extends State<MusicGamePage> {
 
   Widget _flourlackButton() {
     return Positioned(
-      bottom: 100,
-      right: 240,
+      //bottom: 1851,
+      left: 86.33,
       child: Visibility(
         visible: visibleMusicButtons,
         child: InkWell(
           onTap: () {
             print("you tapped flourlackButton");
-            audioList.elementAt(0).mute();
+            audioList.elementAt(0).unmute();
           },
           child: Transform.rotate(
-            angle: math.pi / 4,
+            angle: -53,
             child: Image(
-              image: AssetImage("assets/placeholderMuted.png"),
-              height: 50,
-              width: 25,
+              image: AssetImage("assets/Images/Flourlack_OFF.png"),
+              height: 60.78,
+              width: 24.28,
             ),
           ),
         ),
