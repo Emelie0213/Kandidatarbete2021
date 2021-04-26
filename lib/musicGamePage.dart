@@ -18,8 +18,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
   @override
   void initState() {
     super.initState();
-    audioList = getAudio();
-    loadAudio(audioList);
+    //audioList = getAudio();
+    //loadAudio(audioList);
   }
 
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
   } //build
 
   Widget _image(context) {
-    if (visibleStartButton = true) {
+    if (visibleStartButton == true) {
       return Image(image: AssetImage("assets/Musicgame_Background_02.png"));
     } else {
       return Image(image: AssetImage("assets/Musicgame_Background.png"));
@@ -65,7 +65,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
                 ),
                 onPressed: () {
                   setState(() {
-                    playAudio(audioList);
+                    //playAudio(audioList);
                     visibleStartButton = false;
                     visibleMusicButtons = true;
                     print(
@@ -87,7 +87,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
           icon: Icon(Icons.forward),
           iconSize: 50,
           onPressed: () {
-            stopAudio(audioList);
+            //stopAudio(audioList);
             Navigator.pop(context);
           },
           color: Color.fromRGBO(42, 132, 210, 1.0),
@@ -105,7 +105,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
         child: InkWell(
           onTap: () {
             print("you tapped flourlackButton");
-            audioList.elementAt(0).unmute();
+            //audioList.elementAt(0).unmute();
           },
           child: Transform.rotate(
             angle: -53,
