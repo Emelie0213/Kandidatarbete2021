@@ -42,7 +42,7 @@ class Audio {
     cache.clearCache();
     print("cleard cache");
   }
-}
+} //class Audio
 
 List<Audio> getAudio() {
   List<Audio> _audioList = <Audio>[
@@ -53,6 +53,7 @@ List<Audio> getAudio() {
     Audio('Rontgen', 'Audio/Rontgen.wav'),
     Audio('Sickel', 'Audio/Sickel.wav'),
     Audio('Sond', 'Audio/Sond.wav'),
+    Audio('Stol', 'Audio/Stol.wav'),
     Audio('Sug', 'Audio/Sug.wav'),
     Audio('Vatten', 'Audio/Vatten.wav'),
   ];

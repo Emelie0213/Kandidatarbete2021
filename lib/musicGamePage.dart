@@ -1,5 +1,3 @@
-import 'package:audioplayers/audio_cache.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -97,27 +95,63 @@ class _MusicGamePageState extends State<MusicGamePage> {
   } //_backButton
 
   Widget _flourlackButton() {
-    return Positioned(
-      top: 200,
-      left: 340,
-      child: Visibility(
-        visible: visibleMusicButtons,
-        child: InkWell(
-          onTap: () {
-            print("you tapped flourlackButton");
-            //audioList.elementAt(0).unmute();
-          },
-          child: RotationTransition(
-            turns: AlwaysStoppedAnimation(55 / 360),
-            child: Image(
-              image: AssetImage("assets/Images/Flourlack_OFF.png"),
-              height: 60.78,
-              width: 24.28,
+    //AssetImage mutedImage = AssetImage('Images/Flourlack_OFF.png');
+    //AssetImage unmutedImage = AssetImage('Images/Flourlack_ON.png');
+    bool _muted = true;
+
+    if (_muted == true) {
+      return Positioned(
+        top: 200,
+        left: 340,
+        child: Visibility(
+          visible: visibleMusicButtons,
+          child: InkWell(
+            onTap: () {
+              setState(() {
+                print("you tapped flourlackButton");
+                //audioList.elementAt(0).unmute();
+                _muted = false;
+              });
+            },
+            child: RotationTransition(
+              turns: AlwaysStoppedAnimation(55 / 360),
+              child: Image(
+                image: AssetImage('assets/Images/Flourlack_OFF.png'),
+                height: 60.78,
+                width: 24.28,
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    } else {
+      return Positioned(
+        top: 200,
+        left: 340,
+        child: Visibility(
+          visible: visibleMusicButtons,
+          child: InkWell(
+            onTap: () {
+              setState(
+                () {
+                  print("you tapped flourlackButton");
+                  //audioList.elementAt(0).unmute();
+                  _muted = true;
+                },
+              );
+            },
+            child: RotationTransition(
+              turns: AlwaysStoppedAnimation(55 / 360),
+              child: Image(
+                image: AssetImage('assets/Images/Flourlack_ON.png'),
+                height: 60.78,
+                width: 24.28,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
   } //_flourlackButton
 } //class MusicGamePageState
 // Various ways to define a half turn:
