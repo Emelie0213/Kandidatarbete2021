@@ -1,4 +1,4 @@
-name: VisitTheDentist
+name: visit_the_dentist
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -26,6 +26,7 @@ dependencies:
 
   audioplayers: ^0.15.1
   audioplayer_web: 0.7.1
+  
 
 
 

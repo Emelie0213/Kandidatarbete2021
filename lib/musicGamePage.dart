@@ -38,9 +38,9 @@ class _MusicGamePageState extends State<MusicGamePage> {
 
   Widget _image(context) {
     if (visibleStartButton == true) {
-      return Image(image: AssetImage("assets/Musicgame_Background_02.png"));
+      return Image(image: AssetImage('assets/Musicgame_Background_02.png'));
     } else {
-      return Image(image: AssetImage("assets/Musicgame_Background.png"));
+      return Image(image: AssetImage('assets/Musicgame_Background.png'));
     }
   }
 
@@ -98,8 +98,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
 
   Widget _flourlackButton() {
     return Positioned(
-      //bottom: 1851,
-      left: 86.33,
+      top: 200,
+      left: 340,
       child: Visibility(
         visible: visibleMusicButtons,
         child: InkWell(
@@ -107,8 +107,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
             print("you tapped flourlackButton");
             //audioList.elementAt(0).unmute();
           },
-          child: Transform.rotate(
-            angle: -53,
+          child: RotationTransition(
+            turns: AlwaysStoppedAnimation(55 / 360),
             child: Image(
               image: AssetImage("assets/Images/Flourlack_OFF.png"),
               height: 60.78,
@@ -120,3 +120,4 @@ class _MusicGamePageState extends State<MusicGamePage> {
     );
   } //_flourlackButton
 } //class MusicGamePageState
+// Various ways to define a half turn:
