@@ -5,23 +5,25 @@ import 'musicGamePage.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final data = MediaQuery.of(context);
+    print("$data");
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _image(context),
-          ],
-        ), //Column
-      ), //Center
+      body: _image(context, data),
     ); //Scaffold
   }
 
-  Widget _image(context) {
+  Widget _image(context, data) {
     return Stack(
       children: [
-        Image(image: AssetImage("assets/HomeMenu.png")),
+        Container(
+          color: Colors.black,
+          height: data.size.height,
+          width: data.size.width,
+        ),
+        Image(
+          height: data.size.height,
+          image: AssetImage("assets/HomeMenu.png"),
+        ),
         Positioned(
             bottom: 130,
             left: 170,

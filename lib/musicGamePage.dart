@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'audio.dart';
+import 'imageButton.dart';
 
 class MusicGamePage extends StatefulWidget {
   @override
@@ -13,6 +14,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
   bool visibleStartButton = true;
   bool visibleMusicButtons = false;
 
+  bool flourlackPlaying = false;
+
   @override
   void initState() {
     super.initState();
@@ -20,25 +23,39 @@ class _MusicGamePageState extends State<MusicGamePage> {
     //loadAudio(audioList);
   }
 
+  void dispose() {
+    super.dispose();
+    //stopAudio(audioList);
+  }
+
   Widget build(BuildContext context) {
+    final data = MediaQuery.of(context);
+
     return Scaffold(
-      body: Center(
-          child: Stack(
-        children: [
-          _image(context),
-          _startButton(),
-          _backButton(),
-          _flourlackButton(),
-        ],
-      )),
-    );
+        body: Stack(
+      children: [
+        Container(
+          color: Colors.black,
+          height: data.size.height,
+          width: data.size.width,
+        ),
+        _image(context, data),
+        _startButton(),
+        _backButton(),
+        _flourlackButton(data),
+      ],
+    ));
   } //build
 
-  Widget _image(context) {
+  Widget _image(context, data) {
     if (visibleStartButton == true) {
-      return Image(image: AssetImage('assets/Musicgame_Background_02.png'));
+      return Image(
+          image: AssetImage('assets/Musicgame_Background_02.png'),
+          height: data.size.height);
     } else {
-      return Image(image: AssetImage('assets/Musicgame_Background.png'));
+      return Image(
+          image: AssetImage('assets/Musicgame_Background.png'),
+          height: data.size.height);
     }
   }
 
@@ -85,7 +102,6 @@ class _MusicGamePageState extends State<MusicGamePage> {
           icon: Icon(Icons.forward),
           iconSize: 50,
           onPressed: () {
-            //stopAudio(audioList);
             Navigator.pop(context);
           },
           color: Color.fromRGBO(42, 132, 210, 1.0),
@@ -94,12 +110,36 @@ class _MusicGamePageState extends State<MusicGamePage> {
     );
   } //_backButton
 
-  Widget _flourlackButton() {
-    //AssetImage mutedImage = AssetImage('Images/Flourlack_OFF.png');
-    //AssetImage unmutedImage = AssetImage('Images/Flourlack_ON.png');
-    bool _muted = true;
+  Widget _flourlackButton(data) {
+    print('${data.size.height}');
+    return ImageButtonWidget(
+        isVisible: visibleMusicButtons,
+        isPlaying: flourlackPlaying,
+        whenNotPlaying: ImageButtonInfo(
+            filename: 'assets/Images/Flourlack_OFF.png',
+            left: data.size.height * 0.98,
+            top: data.size.width * 0.34,
+            rotation: 55,
+            width: 24.28,
+            height: 60.78),
+        whenPlaying: ImageButtonInfo(
+          filename: 'assets/Images/Flourlack_ON.png',
+          left: data.size.height * 0.98,
+          top: data.size.width * 0.34,
+          rotation: 55,
+          width: 24.28,
+          height: 60.78,
+        ),
+        onPressed: () {
+          setState(() {
+            flourlackPlaying = !flourlackPlaying;
+            print('you pressed flourlack!');
+          });
+        });
+  } //FlourlackButton
+} //MusicGamePageState
 
-    if (_muted == true) {
+/* if (_florlackMuted == true) {
       return Positioned(
         top: 200,
         left: 340,
@@ -110,7 +150,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
               setState(() {
                 print("you tapped flourlackButton");
                 //audioList.elementAt(0).unmute();
-                _muted = false;
+                _florlackMuted = false;
               });
             },
             child: RotationTransition(
@@ -136,7 +176,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
                 () {
                   print("you tapped flourlackButton");
                   //audioList.elementAt(0).unmute();
-                  _muted = true;
+                  _florlackMuted = true;
                 },
               );
             },
@@ -153,5 +193,4 @@ class _MusicGamePageState extends State<MusicGamePage> {
       );
     }
   } //_flourlackButton
-} //class MusicGamePageState
-// Various ways to define a half turn:
+}*/
