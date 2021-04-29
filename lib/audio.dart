@@ -35,16 +35,16 @@ class Audio {
   }
 
   void stop() async {
-    player.stop();
+    await player.stop();
     print("stopped $audioFile");
-    player.release();
+    await player.release();
     print("released $audioFile");
     cache.clearCache();
     print("cleard cache");
   }
 } //class Audio
 
-List<Audio> getAudio() {
+List<Audio> getAudioList() {
   List<Audio> _audioList = <Audio>[
     Audio('Blaster', 'Audio/Blaster.wav'),
     Audio('Borr', 'Audio/Borr.wav'),
@@ -76,6 +76,16 @@ void stopAudio(List<Audio> audioList) {
   for (Audio audio in audioList) {
     audio.stop();
   }
+}
+
+Audio getAudio(String name, List<Audio> audioList) {
+  Audio _audio;
+  for (var i = 0; i < audioList.length; i++) {
+    if (audioList[i].name == name) {
+      _audio = audioList[i];
+    }
+  }
+  return _audio;
 }
 
 void unmuteAudio(List<Audio> audioList) {

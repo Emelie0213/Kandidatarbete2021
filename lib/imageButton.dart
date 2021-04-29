@@ -41,8 +41,6 @@ class ImageButtonWidget extends StatelessWidget {
         child: InkWell(
           onTap: () {
             onPressed();
-
-            //audioList.elementAt(0).unmute();
           },
           child: RotationTransition(
             turns: AlwaysStoppedAnimation(imageInfo.rotation / 360),

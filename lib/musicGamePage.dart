@@ -28,14 +28,15 @@ class _MusicGamePageState extends State<MusicGamePage> {
   @override
   void initState() {
     super.initState();
-    //audioList = getAudio();
-    //loadAudio(audioList);
+    audioList = getAudioList();
+    loadAudio(audioList);
   }
 
+  /* @override
   void dispose() {
     super.dispose();
-    //stopAudio(audioList);
-  }
+    stopAudio(audioList);
+  } */
 
   Widget build(BuildContext context) {
     final data = MediaQuery.of(context);
@@ -98,7 +99,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
                 ),
                 onPressed: () {
                   setState(() {
-                    //playAudio(audioList);
+                    playAudio(audioList);
                     visibleStartButton = false;
                     visibleMusicButtons = true;
                     print(
@@ -121,6 +122,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
           iconSize: 50,
           onPressed: () {
             Navigator.pop(context);
+            stopAudio(audioList);
           },
           color: Color.fromRGBO(42, 132, 210, 1.0),
         ),
@@ -151,6 +153,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
         onPressed: () {
           setState(() {
             blasterPlaying = !blasterPlaying;
+            Audio _audio = getAudio('Blaster', audioList);
+            blasterPlaying ? _audio.unmute() : _audio.mute();
             print('you pressed blaster!');
           });
         });
@@ -179,6 +183,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
         onPressed: () {
           setState(() {
             borrPlaying = !borrPlaying;
+            Audio _audio = getAudio('Borr', audioList);
+            borrPlaying ? _audio.unmute() : _audio.mute();
             print('you pressed borr!');
           });
         });
@@ -206,6 +212,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
         onPressed: () {
           setState(() {
             flourlackPlaying = !flourlackPlaying;
+            Audio _audio = getAudio('Flourlack', audioList);
+            flourlackPlaying ? _audio.unmute() : _audio.mute();
             print('you pressed flourlack!');
           });
         });
@@ -234,6 +242,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
         onPressed: () {
           setState(() {
             putsPlaying = !putsPlaying;
+            Audio _audio = getAudio('Puts', audioList);
+            putsPlaying ? _audio.unmute() : _audio.mute();
             print('you pressed borr!');
           });
         });
@@ -261,6 +271,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
         onPressed: () {
           setState(() {
             rontgenPlaying = !rontgenPlaying;
+            Audio _audio = getAudio('Rontgen', audioList);
+            rontgenPlaying ? _audio.unmute() : _audio.mute();
             print('you pressed rontgen!');
           });
         });
@@ -288,6 +300,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
         onPressed: () {
           setState(() {
             sickelPlaying = !sickelPlaying;
+            Audio _audio = getAudio('Sickel', audioList);
+            sickelPlaying ? _audio.unmute() : _audio.mute();
             print('you pressed sickel!');
           });
         });
@@ -315,6 +329,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
         onPressed: () {
           setState(() {
             sondPlaying = !sondPlaying;
+            Audio _audio = getAudio('Sond', audioList);
+            sondPlaying ? _audio.unmute() : _audio.mute();
             print('you pressed sond!');
           });
         });
@@ -342,6 +358,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
         onPressed: () {
           setState(() {
             stolPlaying = !stolPlaying;
+            Audio _audio = getAudio('Stol', audioList);
+            stolPlaying ? _audio.unmute() : _audio.mute();
             print('you pressed stol!');
           });
         });
@@ -369,6 +387,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
         onPressed: () {
           setState(() {
             sugPlaying = !sugPlaying;
+            Audio _audio = getAudio('Sug', audioList);
+            sugPlaying ? _audio.unmute() : _audio.mute();
             print('you pressed sug!');
           });
         });
@@ -397,6 +417,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
         onPressed: () {
           setState(() {
             vattenPlaying = !vattenPlaying;
+            Audio _audio = getAudio('Vatten', audioList);
+            vattenPlaying ? _audio.unmute() : _audio.mute();
             print('you pressed vatten!');
           });
         });
