@@ -25,23 +25,22 @@ class HomePage extends StatelessWidget {
           image: AssetImage("assets/HomeMenu.png"),
         ),
         Positioned(
-            bottom: 130,
-            left: 170,
-            child: Visibility(
-              child: FlatButton(
-                color: Colors.blue,
-                shape: CircleBorder(),
-                child: null,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MusicGamePage()));
-                },
-              ),
-              maintainSize: true,
-              maintainAnimation: true,
-              maintainState: true,
-              visible: true,
-            )),
+          bottom: 140,
+          left: 180,
+          child: Opacity(
+            opacity: 0.0,
+            child: FlatButton(
+              height: 75,
+              color: Colors.blue,
+              shape: CircleBorder(),
+              child: null,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MusicGamePage()));
+              },
+            ),
+          ),
+        ),
       ],
     );
   }
