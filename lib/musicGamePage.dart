@@ -117,18 +117,18 @@ class _MusicGamePageState extends State<MusicGamePage> {
         isPlaying: flourlackPlaying,
         whenNotPlaying: ImageButtonInfo(
             filename: 'assets/Images/Flourlack_OFF.png',
-            left: data.size.height * 0.98,
-            top: data.size.width * 0.34,
+            left: data.size.height * 0.95,
+            top: data.size.width * 0.36,
             rotation: 55,
             width: 24.28,
             height: 60.78),
         whenPlaying: ImageButtonInfo(
           filename: 'assets/Images/Flourlack_ON.png',
-          left: data.size.height * 0.98,
-          top: data.size.width * 0.34,
-          rotation: 55,
-          width: 24.28,
-          height: 60.78,
+          left: data.size.height * 0.95,
+          top: data.size.width * 0.36,
+          rotation: 50,
+          width: 28.5,
+          height: 66,
         ),
         onPressed: () {
           setState(() {
