@@ -61,6 +61,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
         _stolButton(data),
         _sugButton(data),
         _vattenButton(data),
+        _recordButton(),
         _backButton(),
       ],
     ));
@@ -102,8 +103,6 @@ class _MusicGamePageState extends State<MusicGamePage> {
                     playAudio(audioList);
                     visibleStartButton = false;
                     visibleMusicButtons = true;
-                    print(
-                        "startbutton: $visibleStartButton , musicbuttons: $visibleMusicButtons");
                   });
                 }),
           ),
@@ -114,21 +113,54 @@ class _MusicGamePageState extends State<MusicGamePage> {
 
   Widget _backButton() {
     return Positioned(
-      top: 10,
+      top: 15,
+      left: 5,
       child: Transform.rotate(
         angle: 180 * math.pi / 180,
-        child: IconButton(
-          icon: Icon(Icons.forward),
-          iconSize: 50,
+        child: FloatingActionButton(
+          backgroundColor: Color.fromRGBO(42, 132, 210, 1.0),
+          shape: StadiumBorder(
+              side: BorderSide(
+            color: Colors.blue[900],
+            width: 2,
+          )),
+          child: Icon(
+            Icons.forward,
+            color: Colors.white,
+            size: 50,
+          ),
           onPressed: () {
             Navigator.pop(context);
             stopAudio(audioList);
           },
-          color: Color.fromRGBO(42, 132, 210, 1.0),
         ),
       ),
     );
   } //_backButton
+
+  Widget _recordButton() {
+    return Positioned(
+      bottom: 15,
+      left: 5,
+      child: Transform.rotate(
+        angle: 180 * math.pi / 180,
+        child: FloatingActionButton(
+          backgroundColor: Colors.white,
+          shape: StadiumBorder(
+              side: BorderSide(
+            color: Colors.red,
+            width: 4,
+          )),
+          child: Icon(
+            Icons.fiber_manual_record,
+            color: Colors.red,
+            size: 50,
+          ),
+          onPressed: () {},
+        ),
+      ),
+    );
+  }
 
   Widget _blasterButton(data) {
     return ImageButtonWidget(

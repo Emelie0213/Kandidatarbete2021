@@ -24,8 +24,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  audioplayers: ^0.15.1
-  audioplayer_web: 0.7.1
+  audioplayers: ^0.18.3
+  google_fonts: ^2.0.0
+  
   
 
 
@@ -44,11 +45,13 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
-    - assets/HomeMenu.png
-    - assets/Musicgame_Background.png
-    - assets/Musicgame_Background_02.png
+    - assets/
     - assets/Audio/
     - assets/Images/
+  
+  
+  
+
 
 
   # The following line ensures that the Material Icons font is

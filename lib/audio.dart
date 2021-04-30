@@ -16,12 +16,10 @@ class Audio {
 
   void load() async {
     await cache.load(audioFile);
-    print('loaded $audioFile');
   }
 
   void play() async {
     player = await cache.loop(audioFile, volume: volume);
-    print("playing $audioFile");
   }
 
   void mute() {
@@ -63,18 +61,21 @@ List<Audio> getAudioList() {
 void loadAudio(List<Audio> audioList) {
   for (Audio audio in audioList) {
     audio.load();
+    print('loaded all audio');
   }
 }
 
 void playAudio(List<Audio> audioList) {
   for (Audio audio in audioList) {
     audio.play();
+    print('plays all audio');
   }
 }
 
 void stopAudio(List<Audio> audioList) {
   for (Audio audio in audioList) {
     audio.stop();
+    print('stopped & released all audio');
   }
 }
 
@@ -86,10 +87,4 @@ Audio getAudio(String name, List<Audio> audioList) {
     }
   }
   return _audio;
-}
-
-void unmuteAudio(List<Audio> audioList) {
-  for (Audio audio in audioList) {
-    audio.unmute();
-  }
 }
