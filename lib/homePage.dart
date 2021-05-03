@@ -6,6 +6,59 @@ import 'package:google_fonts/google_fonts.dart';
 import 'musicGamePage.dart';
 
 class HomePage extends StatelessWidget {
+  Future<void> _showDialog(context, title, message) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Center(
+            child: Text('$title',
+                style: GoogleFonts.indieFlower(
+                    fontWeight: FontWeight.bold,
+                    height: 1.2,
+                    color: Colors.white,
+                    fontSize: 25,
+                    letterSpacing: 2)),
+          ),
+          backgroundColor: Color.fromRGBO(42, 132, 210, 1.0),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Center(
+                  child: Text(
+                    '$message',
+                    style: GoogleFonts.indieFlower(
+                        height: 1.2,
+                        color: Colors.white,
+                        fontSize: 20,
+                        letterSpacing: 2),
+                  ),
+                )
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text(
+                'OK',
+                style: GoogleFonts.indieFlower(
+                  fontWeight: FontWeight.bold,
+                  height: 1.2,
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final data = MediaQuery.of(context);
@@ -14,15 +67,16 @@ class HomePage extends StatelessWidget {
       children: [
         _background(data),
         _backgroundImage(data),
-        _language(),
-        _groda(),
+        _language(context),
+        _frog(context),
         _musicGamePageButton(context),
-        _rontgenGameButton(),
-        _sugGameButton(),
-        _computorButton(),
-        _memoryGameButton(),
-        _radioButton(),
-        _puzzleGameButton(),
+        _rontgenGameButton(context),
+        _sugGameButton(context),
+        _computorButton(context),
+        _memoryGameButton(context),
+        _hideAndSeekButton(context),
+        _radioButton(context),
+        _puzzleGameButton(context),
       ],
     ));
   }
@@ -42,20 +96,41 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _language() {
+  Widget _language(context) {
+    String title = 'Språk';
+    String message = 'Välj vilket språk appen ska använda.';
+
     return Positioned(
       bottom: 15,
       left: 5,
-      child: Image(height: 45, width: 45, image: AssetImage('assets/flag.png')),
+      child: InkWell(
+        child: Image(
+          height: 45,
+          width: 45,
+          image: AssetImage('assets/flag.png'),
+        ),
+        onTap: () {
+          _showDialog(context, title, message);
+        },
+      ),
     );
   }
 
-  Widget _groda() {
+  Widget _frog(context) {
+    String title = 'Belöningssystem';
+    String message =
+        'Samla grodor i olika färger genom \natt spela de olika spelen.';
+
     return Positioned(
       bottom: 12,
       left: 60,
-      child:
-          Image(height: 50, width: 50, image: AssetImage('assets/groda.png')),
+      child: InkWell(
+        child:
+            Image(height: 50, width: 50, image: AssetImage('assets/groda.png')),
+        onTap: () {
+          _showDialog(context, title, message);
+        },
+      ),
     );
   }
 
@@ -80,7 +155,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _rontgenGameButton() {
+  Widget _rontgenGameButton(context) {
+    String title = 'Röntgenspel';
+    String message = 'Ta röntgenbilder genom att matcha \nkameran med tanden.';
+
     return Positioned(
       bottom: 240,
       left: 255,
@@ -91,14 +169,20 @@ class HomePage extends StatelessWidget {
           width: 40,
           child: FloatingActionButton(
             shape: CircleBorder(),
-            onPressed: () {},
+            onPressed: () {
+              _showDialog(context, title, message);
+            },
           ),
         ),
       ),
     );
   }
 
-  Widget _sugGameButton() {
+  Widget _sugGameButton(context) {
+    String title = 'Sugspel';
+    String message =
+        'Vattenfontänen börjar läcka och \nbehandligsrummet fylls med vatten. \n\nAnvänd sugen för att suga upp \nallt vatten.';
+
     return Positioned(
       bottom: 185,
       left: 266,
@@ -109,17 +193,22 @@ class HomePage extends StatelessWidget {
           width: 40,
           child: FloatingActionButton(
             shape: CircleBorder(),
-            onPressed: () {},
+            onPressed: () {
+              _showDialog(context, title, message);
+            },
           ),
         ),
       ),
     );
   }
 
-  Widget _computorButton() {
+  Widget _computorButton(context) {
+    String title = 'Information till föräldrarna';
+    String message = '';
+
     return Positioned(
         bottom: 190,
-        left: 16,
+        left: 12,
         child: TextButton(
           child: Text(
             'Välkommen!\nKlicka runt och \nutforska \nbehandlingsrummet',
@@ -127,31 +216,67 @@ class HomePage extends StatelessWidget {
               fontWeight: FontWeight.bold,
               height: 1.2,
               color: Color.fromRGBO(42, 132, 210, 1.0),
+              letterSpacing: 0.9,
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            _showDialog(context, title, message);
+          },
         ));
   }
 
-  Widget _memoryGameButton() {
+  Widget _memoryGameButton(context) {
+    String title = 'Memory';
+    String message =
+        'Spela memory med olika verktyg och \nsaker som finns i behandlingsrummet. \nReglera svårighetsgraden.';
+
     return Positioned(
-      bottom: 115,
-      left: 295,
+      bottom: 150,
+      left: 345,
       child: Opacity(
         opacity: 1.0,
         child: Container(
-          height: 60,
-          width: 60,
+          height: 55,
+          width: 55,
           child: FloatingActionButton(
             shape: CircleBorder(),
-            onPressed: () {},
+            onPressed: () {
+              _showDialog(context, title, message);
+            },
           ),
         ),
       ),
     );
   }
 
-  Widget _radioButton() {
+  Widget _hideAndSeekButton(context) {
+    String title = 'Hitta Verktygen';
+    String message =
+        'Hitta vektygen som gömt sig på \nolika ställen i behandlingsrummet.';
+
+    return Positioned(
+      bottom: 115,
+      left: 295,
+      child: Opacity(
+        opacity: 1.0,
+        child: Container(
+          height: 55,
+          width: 55,
+          child: FloatingActionButton(
+            shape: CircleBorder(),
+            onPressed: () {
+              _showDialog(context, title, message);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _radioButton(context) {
+    String title = 'Radion';
+    String message = 'Spela upp låtarna som du \ngjort i musikspelet.';
+
     return Positioned(
       bottom: 160,
       left: 505,
@@ -162,14 +287,20 @@ class HomePage extends StatelessWidget {
           width: 70,
           child: FloatingActionButton(
             shape: CircleBorder(),
-            onPressed: () {},
+            onPressed: () {
+              _showDialog(context, title, message);
+            },
           ),
         ),
       ),
     );
   }
 
-  Widget _puzzleGameButton() {
+  Widget _puzzleGameButton(context) {
+    String title = 'Pussel';
+    String message =
+        'Välj mellan två sorters pussel \noch svårighetsgrad. Bygg ihop \nbilder på de olika verktygen.';
+
     return Positioned(
       bottom: 210,
       left: 420,
@@ -180,7 +311,9 @@ class HomePage extends StatelessWidget {
           width: 100,
           child: FloatingActionButton(
             shape: CircleBorder(),
-            onPressed: () {},
+            onPressed: () {
+              _showDialog(context, title, message);
+            },
           ),
         ),
       ),
