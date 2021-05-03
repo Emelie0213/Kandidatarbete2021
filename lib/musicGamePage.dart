@@ -123,7 +123,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
           height: data.size.height,
           width: data.size.width,
         ),
-        _image(context, data),
+        _backgrundImage(context, data),
         _startButton(),
         _blasterButton(data),
         _borrButton(data),
@@ -141,7 +141,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
     ));
   } //build
 
-  Widget _image(context, data) {
+  Widget _backgrundImage(context, data) {
     if (visibleStartButton == true) {
       return Image(
           image: AssetImage('assets/Musicgame_Background_02.png'),
@@ -162,6 +162,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
           child: Visibility(
             visible: visibleStartButton,
             child: FloatingActionButton(
+                heroTag: Text('startButton'),
                 backgroundColor: Color.fromRGBO(42, 132, 210, 1.0),
                 shape: StadiumBorder(
                     side: BorderSide(
@@ -192,6 +193,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
       child: Transform.rotate(
         angle: 180 * math.pi / 180,
         child: FloatingActionButton(
+          heroTag: Text('backButton'),
           backgroundColor: Color.fromRGBO(42, 132, 210, 1.0),
           shape: StadiumBorder(
               side: BorderSide(
@@ -221,6 +223,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
         child: Visibility(
           visible: visibleMusicButtons,
           child: FloatingActionButton(
+            heroTag: Text('recordButton'),
             backgroundColor: Colors.white,
             shape: StadiumBorder(
                 side: BorderSide(

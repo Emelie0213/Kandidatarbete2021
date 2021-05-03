@@ -22,20 +22,23 @@ class HomePage extends StatelessWidget {
                     letterSpacing: 2)),
           ),
           backgroundColor: Color.fromRGBO(42, 132, 210, 1.0),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    '$message',
-                    style: GoogleFonts.indieFlower(
-                        height: 1.2,
-                        color: Colors.white,
-                        fontSize: 20,
-                        letterSpacing: 2),
-                  ),
-                )
-              ],
+          content: Scrollbar(
+            isAlwaysShown: true,
+            child: SingleChildScrollView(
+              child: ListBody(
+                children: <Widget>[
+                  Center(
+                    child: Text(
+                      '$message',
+                      style: GoogleFonts.indieFlower(
+                          height: 1.2,
+                          color: Colors.white,
+                          fontSize: 20,
+                          letterSpacing: 2),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
           actions: <Widget>[
@@ -139,11 +142,12 @@ class HomePage extends StatelessWidget {
       bottom: 140,
       left: 180,
       child: Opacity(
-        opacity: 1.0,
+        opacity: 0.0,
         child: Container(
           height: 80,
           width: 80,
           child: FloatingActionButton(
+            heroTag: Text('musicGamePage'),
             shape: CircleBorder(),
             onPressed: () {
               Navigator.push(context,
@@ -163,11 +167,12 @@ class HomePage extends StatelessWidget {
       bottom: 240,
       left: 255,
       child: Opacity(
-        opacity: 1.0,
+        opacity: 0.0,
         child: Container(
           height: 40,
           width: 40,
           child: FloatingActionButton(
+            heroTag: Text('rontgenGameButton'),
             shape: CircleBorder(),
             onPressed: () {
               _showDialog(context, title, message);
@@ -187,11 +192,12 @@ class HomePage extends StatelessWidget {
       bottom: 185,
       left: 266,
       child: Opacity(
-        opacity: 1.0,
+        opacity: 0.0,
         child: Container(
           height: 40,
           width: 40,
           child: FloatingActionButton(
+            heroTag: Text('sugGameButton'),
             shape: CircleBorder(),
             onPressed: () {
               _showDialog(context, title, message);
@@ -203,25 +209,29 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _computorButton(context) {
-    String title = 'Information till föräldrarna';
-    String message = '';
+    String title = 'Information för vuxna';
+    String message =
+        'En lista med paket av minispel för olika \nbehandlingar; undersökning, lagning osv. \n\nFöre varje spel får föräldern förslag på \ndiskussionsämnen att ta upp med sitt barn; \nhur det kan låta, kännas osv.';
 
     return Positioned(
-        bottom: 190,
-        left: 12,
-        child: TextButton(
-          child: Text(
-            'Välkommen!\nKlicka runt och \nutforska \nbehandlingsrummet',
-            style: GoogleFonts.indieFlower(
-              fontWeight: FontWeight.bold,
-              height: 1.2,
-              color: Color.fromRGBO(42, 132, 210, 1.0),
-              letterSpacing: 0.9,
+        bottom: 193,
+        left: 13,
+        child: Card(
+          color: Color.fromRGBO(42, 132, 210, 1.0),
+          child: TextButton(
+            child: Text(
+              'Välkommen!\nKlicka runt och \nutforska \nbehandlingsrummet',
+              style: GoogleFonts.indieFlower(
+                  fontWeight: FontWeight.bold,
+                  height: 1.2,
+                  color: Colors.white,
+                  letterSpacing: 0.9,
+                  fontSize: 12),
             ),
+            onPressed: () {
+              _showDialog(context, title, message);
+            },
           ),
-          onPressed: () {
-            _showDialog(context, title, message);
-          },
         ));
   }
 
@@ -234,11 +244,12 @@ class HomePage extends StatelessWidget {
       bottom: 150,
       left: 345,
       child: Opacity(
-        opacity: 1.0,
+        opacity: 0.0,
         child: Container(
           height: 55,
           width: 55,
           child: FloatingActionButton(
+            heroTag: Text('memoryGameButton'),
             shape: CircleBorder(),
             onPressed: () {
               _showDialog(context, title, message);
@@ -258,11 +269,12 @@ class HomePage extends StatelessWidget {
       bottom: 115,
       left: 295,
       child: Opacity(
-        opacity: 1.0,
+        opacity: 0.0,
         child: Container(
           height: 55,
           width: 55,
           child: FloatingActionButton(
+            heroTag: Text('hideAndSeekButton'),
             shape: CircleBorder(),
             onPressed: () {
               _showDialog(context, title, message);
@@ -281,11 +293,12 @@ class HomePage extends StatelessWidget {
       bottom: 160,
       left: 505,
       child: Opacity(
-        opacity: 1.0,
+        opacity: 0.0,
         child: Container(
           height: 70,
           width: 70,
           child: FloatingActionButton(
+            heroTag: Text('radioButton'),
             shape: CircleBorder(),
             onPressed: () {
               _showDialog(context, title, message);
@@ -305,11 +318,12 @@ class HomePage extends StatelessWidget {
       bottom: 210,
       left: 420,
       child: Opacity(
-        opacity: 1.0,
+        opacity: 0.0,
         child: Container(
           height: 100,
           width: 100,
           child: FloatingActionButton(
+            heroTag: Text('puzzleGameButton'),
             shape: CircleBorder(),
             onPressed: () {
               _showDialog(context, title, message);
