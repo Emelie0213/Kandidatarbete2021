@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:math' as math;
 
 import 'audio.dart';
@@ -32,11 +33,84 @@ class _MusicGamePageState extends State<MusicGamePage> {
     loadAudio(audioList);
   }
 
-  /* @override
-  void dispose() {
-    super.dispose();
-    stopAudio(audioList);
-  } */
+  Future<void> _saveTrack() async {
+    return (await showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            backgroundColor: Color.fromRGBO(42, 132, 210, 1.0),
+            title: Center(
+              child: Text('Spara din låt',
+                  style: GoogleFonts.indieFlower(
+                    fontWeight: FontWeight.bold,
+                    height: 1.2,
+                    color: Colors.white,
+                    fontSize: 25,
+                    letterSpacing: 2,
+                  )),
+            ),
+            children: <Widget>[
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 5.0),
+                    child: Text(
+                      'Låt 1',
+                      style: GoogleFonts.indieFlower(
+                          fontWeight: FontWeight.bold,
+                          height: 1.2,
+                          fontSize: 20,
+                          letterSpacing: 2,
+                          color: Color.fromRGBO(42, 132, 210, 1.0)),
+                    ),
+                  ),
+                ),
+              ),
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 5.0),
+                    child: Text(
+                      'Låt 2',
+                      style: GoogleFonts.indieFlower(
+                          fontWeight: FontWeight.bold,
+                          height: 1.2,
+                          fontSize: 20,
+                          letterSpacing: 2,
+                          color: Color.fromRGBO(42, 132, 210, 1.0)),
+                    ),
+                  ),
+                ),
+              ),
+              SimpleDialogOption(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 5.0),
+                    child: Text(
+                      'Låt 3',
+                      style: GoogleFonts.indieFlower(
+                          fontWeight: FontWeight.bold,
+                          height: 1.2,
+                          color: Color.fromRGBO(42, 132, 210, 1.0),
+                          fontSize: 20,
+                          letterSpacing: 2),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          );
+        }));
+  }
 
   Widget build(BuildContext context) {
     final data = MediaQuery.of(context);
@@ -144,19 +218,24 @@ class _MusicGamePageState extends State<MusicGamePage> {
       left: 5,
       child: Transform.rotate(
         angle: 180 * math.pi / 180,
-        child: FloatingActionButton(
-          backgroundColor: Colors.white,
-          shape: StadiumBorder(
-              side: BorderSide(
-            color: Colors.red,
-            width: 4,
-          )),
-          child: Icon(
-            Icons.fiber_manual_record,
-            color: Colors.red,
-            size: 50,
+        child: Visibility(
+          visible: visibleMusicButtons,
+          child: FloatingActionButton(
+            backgroundColor: Colors.white,
+            shape: StadiumBorder(
+                side: BorderSide(
+              color: Colors.red,
+              width: 4,
+            )),
+            child: Icon(
+              Icons.fiber_manual_record,
+              color: Colors.red,
+              size: 50,
+            ),
+            onPressed: () {
+              _saveTrack();
+            },
           ),
-          onPressed: () {},
         ),
       ),
     );
