@@ -95,7 +95,7 @@ class HomePage extends StatelessWidget {
   Widget _backgroundImage(data) {
     return Image(
       height: data.size.height,
-      image: AssetImage('assets/HomeMenu.png'),
+      image: AssetImage('assets/HomeMenu01.png'),
     );
   }
 
