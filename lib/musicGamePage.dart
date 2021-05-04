@@ -163,15 +163,11 @@ class _MusicGamePageState extends State<MusicGamePage> {
             visible: visibleStartButton,
             child: FloatingActionButton(
                 heroTag: Text('startButton'),
-                backgroundColor: Color.fromRGBO(42, 132, 210, 1.0),
-                shape: StadiumBorder(
-                    side: BorderSide(
-                  color: Colors.blue[900],
-                  width: 4,
-                )),
-                child: Text(
-                  'START',
-                  textScaleFactor: 1.5,
+                backgroundColor: Colors.white,
+                child: Icon(
+                  Icons.play_circle_filled_sharp,
+                  color: Color.fromRGBO(42, 132, 210, 1.0),
+                  size: 120,
                 ),
                 onPressed: () {
                   setState(() {
@@ -197,7 +193,7 @@ class _MusicGamePageState extends State<MusicGamePage> {
           backgroundColor: Color.fromRGBO(42, 132, 210, 1.0),
           shape: StadiumBorder(
               side: BorderSide(
-            color: Colors.blue[900],
+            color: Colors.white,
             width: 2,
           )),
           child: Icon(
@@ -218,27 +214,24 @@ class _MusicGamePageState extends State<MusicGamePage> {
     return Positioned(
       bottom: 15,
       left: 5,
-      child: Transform.rotate(
-        angle: 180 * math.pi / 180,
-        child: Visibility(
-          visible: visibleMusicButtons,
-          child: FloatingActionButton(
-            heroTag: Text('recordButton'),
-            backgroundColor: Colors.white,
-            shape: StadiumBorder(
-                side: BorderSide(
-              color: Colors.red,
-              width: 4,
-            )),
-            child: Icon(
-              Icons.fiber_manual_record,
-              color: Colors.red,
-              size: 50,
-            ),
-            onPressed: () {
-              _saveTrack();
-            },
+      child: Visibility(
+        visible: visibleMusicButtons,
+        child: FloatingActionButton(
+          heroTag: Text('recordButton'),
+          backgroundColor: Color.fromRGBO(42, 132, 210, 1.0),
+          shape: StadiumBorder(
+              side: BorderSide(
+            color: Colors.white,
+            width: 2,
+          )),
+          child: Icon(
+            Icons.star,
+            color: Colors.yellow[700],
+            size: 50,
           ),
+          onPressed: () {
+            _saveTrack();
+          },
         ),
       ),
     );
