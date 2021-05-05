@@ -140,7 +140,7 @@ class HomePage extends StatelessWidget {
   Widget _musicGamePageButton(context) {
     return Positioned(
       bottom: 140,
-      left: 180,
+      left: 200,
       child: Opacity(
         opacity: 0.0,
         child: Container(
@@ -164,8 +164,8 @@ class HomePage extends StatelessWidget {
     String message = 'Ta röntgenbilder genom att matcha \nkameran med tanden.';
 
     return Positioned(
-      bottom: 240,
-      left: 255,
+      bottom: 245,
+      left: 270,
       child: Opacity(
         opacity: 0.0,
         child: Container(
@@ -190,7 +190,7 @@ class HomePage extends StatelessWidget {
 
     return Positioned(
       bottom: 185,
-      left: 266,
+      left: 290,
       child: Opacity(
         opacity: 0.0,
         child: Container(
@@ -214,8 +214,8 @@ class HomePage extends StatelessWidget {
         'En lista med paket av minispel för olika \nbehandlingar; undersökning, lagning osv. \n\nFöre varje spel får föräldern förslag på \ndiskussionsämnen att ta upp med sitt barn; \nhur det kan låta, kännas osv.';
 
     return Positioned(
-        bottom: 193,
-        left: 13,
+        bottom: 194,
+        left: 12.8,
         child: Card(
           color: Color.fromRGBO(42, 132, 210, 1.0),
           child: TextButton(
@@ -225,8 +225,8 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   height: 1.2,
                   color: Colors.white,
-                  letterSpacing: 0.9,
-                  fontSize: 12),
+                  letterSpacing: 1,
+                  fontSize: 13.7),
             ),
             onPressed: () {
               _showDialog(context, title, message);
@@ -241,8 +241,8 @@ class HomePage extends StatelessWidget {
         'Spela memory med olika verktyg och \nsaker som finns i behandlingsrummet. \nReglera svårighetsgraden.';
 
     return Positioned(
-      bottom: 150,
-      left: 345,
+      bottom: 160,
+      left: 370,
       child: Opacity(
         opacity: 0.0,
         child: Container(
@@ -267,7 +267,7 @@ class HomePage extends StatelessWidget {
 
     return Positioned(
       bottom: 115,
-      left: 295,
+      left: 320,
       child: Opacity(
         opacity: 0.0,
         child: Container(
@@ -291,7 +291,7 @@ class HomePage extends StatelessWidget {
 
     return Positioned(
       bottom: 160,
-      left: 505,
+      left: 547,
       child: Opacity(
         opacity: 0.0,
         child: Container(
@@ -315,8 +315,8 @@ class HomePage extends StatelessWidget {
         'Välj mellan två sorters pussel \noch svårighetsgrad. Bygg ihop \nbilder på de olika verktygen.';
 
     return Positioned(
-      bottom: 210,
-      left: 420,
+      bottom: 215,
+      left: 450,
       child: Opacity(
         opacity: 0.0,
         child: Container(
