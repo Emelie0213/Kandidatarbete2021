@@ -515,8 +515,8 @@ class _MusicGamePageState extends State<MusicGamePage> {
         ),
         whenPlaying: ImageButtonInfo(
           filename: 'assets/Images/Vatten_ON.png',
-          left: data.size.height * 0.45,
-          top: data.size.width * 0.24,
+          left: data.size.height * 0.48,
+          top: data.size.width * 0.2,
           rotation: 3,
           width: 126.47,
           height: 130,
