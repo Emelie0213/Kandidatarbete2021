@@ -1,8 +1,12 @@
 # kandidat_prototyp
 Kandidatarbete 2021
-Emelie Folkesson och Ellinor Stomdal
+av Emelie Folkesson och Ellinor Stomdal
 
 Instutionen för tillämpad IT, Göteborgs universitet
+
+Digitala verktyg i kampen mot tandvårdsrädsla
+
+Att designa en gamifierad app för att förbereda barn inför tandvårdsbesök och förebygga oro
 
 Abstract
 
@@ -11,3 +15,5 @@ Trots att tandhälsan förbättrats de senaste åren har förekomsten av tandvå
 Nyckelord
 
 Tandvårdsrädsla, tell-show-do, mHealth, gamification, MDE (mechanics, dynamics and emotions), research through design, interaktionsdesign.
+
+Koden innefattar bland annat Ljudspelet som gör att man kan skapa ett beat genom att kombinera ljuden från tandvårdsinstrumenten.
